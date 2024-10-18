@@ -12,7 +12,7 @@ Milestone 3
 Inseriamo un foglio JavaScript ed effettuiamo una chiamata AJAX all’API di JSON Placeholder, sfruttando la risposta per generare dinamicamente in pagina una serie di foto!         //FATTO
 
 Bonus
-rendi la pagina responsive, in modo che su mobile e tablet le foto si dispongano man mano una sotto l’altra ed il titolo abbia una dimensione adeguata
+rendi la pagina responsive, in modo che su mobile e tablet le foto si dispongano man mano una sotto l’altra ed il titolo abbia una dimensione adeguata          //FATTO
 */
 
 axios.get ("https://jsonplaceholder.typicode.com/photos?_limit=6")
