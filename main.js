@@ -15,7 +15,6 @@ Bonus
 rendi la pagina responsive, in modo che su mobile e tablet le foto si dispongano man mano una sotto l’altra ed il titolo abbia una dimensione adeguata
 */
 
-
 axios.get ("https://jsonplaceholder.typicode.com/photos?_limit=6")
 .then(response => {
     let result = response.data;
@@ -30,7 +29,7 @@ axios.get ("https://jsonplaceholder.typicode.com/photos?_limit=6")
         <div class="col-20rem">
             <img class="img" src="${url}" alt="">
             <img class="pin" src="./blog_assets_day1/img/pin.svg" alt="">
-            <p class="card-text">${title_maiusc}</p>
+            <p class="card-text">${title}</p>
         </div>
         `
         //inserimento del markup nell stringa vuota (+= così si sommano ad ogni iterazione del ciclo)
@@ -41,6 +40,8 @@ axios.get ("https://jsonplaceholder.typicode.com/photos?_limit=6")
         row.innerHTML = cards_elements;
     });
 })
+
+
 
 
 
