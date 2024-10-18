@@ -1,0 +1,45 @@
+.header{
+    background-image: url(./blog_assets_day1/img/wall.png);
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title{
+    font-size: 4rem;
+    font-family: "Sometype Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.main{
+    background-image: url(./blog_assets_day1/img/cork.png);
+    font-family: "Edu TAS Beginner", cursive;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+}
+
+.col-20rem{
+    width: 20rem;
+    background-color: white;
+    padding: 1rem;
+    position: relative;
+}
+
+.img{
+    width: 18rem;
+    height: 18rem;
+    margin-bottom: 1rem;
+}
+
+.pin {
+    width: 2rem;
+    position: absolute;
+    top: -0.5rem;
+    left: 9rem;
+}
