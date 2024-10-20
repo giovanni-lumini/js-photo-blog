@@ -25,7 +25,12 @@ axios.get ("https://jsonplaceholder.typicode.com/photos?_limit=6")
     result.forEach(element => {
         let {url, title} = element;
         //inserire la maiuscola ad ogni parola di title (stringa)
-        let new_title = title.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+        //1) .split(): crea una array di stringhe, dove ogni parola è una singola stringa sulla quale possiamo agire
+        let new_title = title.split(' ')
+        //2) .map(): funzione dove per ogni stringa dell'array: charAt(0).toUpperCase() prende solo la prima lettera della parola e la mette maiuscola, poi con: + word.slice(1), aggiunge il resto delle lettere della parola (partendo da 1 (seconda lettera, la prima come abbaimo visto è 0))
+        new_title = new_title.map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        // 3) .join("") unisce tutte le stringhe in un'unica stringa, all'interno di un array
+        new_title = new_title.join(' ');
         //creo il markup generato nell'html
         let markup = ` 
         <div class="col-20rem image">
