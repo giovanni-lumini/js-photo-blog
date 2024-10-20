@@ -24,12 +24,14 @@ axios.get ("https://jsonplaceholder.typicode.com/photos?_limit=6")
     //ciclo forEach per accedere agli elementi dell'array
     result.forEach(element => {
         let {url, title} = element;
+        //inserire la maiuscola ad ogni parola di title (stringa)
+        let new_title = title.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
         //creo il markup generato nell'html
         let markup = ` 
         <div class="col-20rem image">
             <img class="img" src="${url}" alt="">
             <img class="pin" src="./blog_assets_day1/img/pin.svg" alt="">
-            <p class="card-text">${title}</p>
+            <p class="card-text">${new_title}</p>
         </div>
         `
         //inserimento del markup nell stringa vuota (+= così si sommano ad ogni iterazione del ciclo)
