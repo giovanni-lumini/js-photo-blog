@@ -18,7 +18,7 @@ rendi la pagina responsive, in modo che su mobile e tablet le foto si dispongano
 axios.get ("https://jsonplaceholder.typicode.com/photos?_limit=6")
 .then(response => {
     let result = response.data;
-    /* console.log(result); */ //array di 6 objects
+    console.log(result); //array di 6 objects
     //stringa vuota dove inserire il markup generato dal ciclo forEach
     let cards_elements = "";
     //ciclo forEach per accedere agli elementi dell'array
@@ -26,7 +26,7 @@ axios.get ("https://jsonplaceholder.typicode.com/photos?_limit=6")
         let {url, title} = element;
         //creo il markup generato nell'html
         let markup = ` 
-        <div class="col-20rem">
+        <div class="col-20rem image">
             <img class="img" src="${url}" alt="">
             <img class="pin" src="./blog_assets_day1/img/pin.svg" alt="">
             <p class="card-text">${title}</p>

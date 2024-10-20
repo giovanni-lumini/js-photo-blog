@@ -43,3 +43,11 @@
     top: -0.5rem;
     left: 9rem;
 }
+
+.image:hover {
+    rotate: 3deg;
+    scale: 1.05;
+    .pin{
+        display: none;
+    }
+}
