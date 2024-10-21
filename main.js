@@ -60,7 +60,7 @@ axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
         //4-metto un'atro pulsante nell'overlay per far chiudere l'overlay
         for (let i = 0; i < img_element.length; i++) {
             img_element[i].addEventListener("click", function function_overlay_on() {
-                //5-genero dinamicamente il contenuto dell'overlay in base all'immagine cliccata
+                //5-genero dinamicamente il contenuto dell'overlay in base all'immagine cliccata                
                 let markup_overlay = `
                 <div>
                     <button type="button" class="btn btn-light mt-3 mb-4">Chiudi</button>
