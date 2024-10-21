@@ -45,37 +45,45 @@ axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
             let row = document.querySelector(".row")
             //modifico l'elemento della dom
             row.innerHTML = cards_elements;
+
+
+
+
+            /* OVERLAY */
+            //1-seleziono tutte le immagini dal dom
+            let img_element = document.querySelectorAll (".img");
+            /* console.log(img_element); */ //NodeList ????
+            //seleziono gli elementi dell'overlay dalla DOM
+            let overlay_element = document.querySelector(".overlay");
+            /* console.log(overlay_element); */
+            let btn_element = document.querySelector(".btn");
+            //2-scorro tra le immagini selezionate e associo a ciascuna un event listener
+            for (let i = 0; i < img_element.length; i++) {
+                //3-al click devo mostrare l'overlay
+                img_element[i].addEventListener("click", function function_overlay_on() {       
+                    let markup_overlay = ` 
+                    <div>
+                        <button type="button" class="btn btn-light mt-3 mb-4">Chiudi</button>
+                    </div>
+                    <div>
+                        <img class="img_overlay" src="${url}" alt="">
+                    </div>
+                    `
+                    overlay_element.innerHTML = markup_overlay;
+                    overlay_element.style.display = "block";
+                })
+                //4-metto un'atro pulsante nell'overlay per far chiudere l'overlay
+                btn_element.addEventListener("click", function function_overlay_off() {
+                    overlay_element.style.display = "none";
+                })
+            }
         });
-
-
-        //1-seleziono tutte le immagini dalla DOM
-        let img_element = document.querySelectorAll(".img");
-        console.log(img_element);
-        //1a-seleziono gli elementi dell'overlay dalla DOM
-        let overlay_element = document.querySelector(".overlay");
-        /* console.log(overlay_element); */
-        let btn_element = document.querySelector(".btn");
+        /* INDICAZIONI FABIO */
+        //1-seleziono tutte le immagini dal dom
         //2-scorro tra le immagini selezionate e associo a ciascuna un event listener
         //3-al click devo mostrare l'overlay
         //4-metto un'atro pulsante nell'overlay per far chiudere l'overlay
-        for (let i = 0; i < img_element.length; i++) {
-            img_element[i].addEventListener("click", function function_overlay_on() {
-                //5-genero dinamicamente il contenuto dell'overlay in base all'immagine cliccata                
-                let markup_overlay = `
-                <div>
-                    <button type="button" class="btn btn-light mt-3 mb-4">Chiudi</button>
-                </div>
-                <div>
-                    ${img_element[i]}
-                </div>
-                `
-                overlay_element.innerHTML = markup_overlay;
-                overlay_element.style.display = "block";
-            })
-            btn_element.addEventListener("click", function function_overlay_off() {
-                overlay_element.style.display = "none";
-            })
-        }
+        //5-genero dinamicamente il contenuto dell'overlay in base all'immagine cliccata
     })
 
 
