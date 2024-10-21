@@ -1,4 +1,4 @@
-.header{
+.header {
     background-image: url(./blog_assets_day1/img/wall.png);
     height: 100px;
     display: flex;
@@ -6,15 +6,17 @@
     align-items: center;
 }
 
-.title{
-    font-size: 4rem;
+.title {
     font-family: "Sometype Mono", monospace;
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: italic;
+    font-size: 4rem;
+    padding: 0;
+    margin: 0;
 }
 
-.main{
+.main {
     background-image: url(./blog_assets_day1/img/cork.png);
     font-family: "Edu TAS Beginner", cursive;
     font-optical-sizing: auto;
@@ -24,14 +26,14 @@
     padding-bottom: 3rem;
 }
 
-.col-20rem{
+.col-20rem {
     width: 20rem;
     background-color: white;
     padding: 1rem;
     position: relative;
 }
 
-.img{
+.img {
     width: 18rem;
     height: 18rem;
     margin-bottom: 1rem;
@@ -47,7 +49,27 @@
 .image:hover {
     rotate: 3deg;
     scale: 1.05;
-    .pin{
+
+    .pin {
         display: none;
     }
+}
+
+.page {
+    position: relative;
+}
+
+.img_overlay {
+    width: 30rem;
+    height: 30rem;
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.835);
+    z-index: 10;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    display: none;
 }
