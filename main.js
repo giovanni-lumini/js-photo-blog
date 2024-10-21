@@ -15,55 +15,74 @@ Bonus
 rendi la pagina responsive, in modo che su mobile e tablet le foto si dispongano man mano una sotto l’altra ed il titolo abbia una dimensione adeguata          //FATTO
 */
 
-axios.get ("https://jsonplaceholder.typicode.com/photos?_limit=6")
-.then(response => {
-    let result = response.data;
-    console.log(result); //array di 6 objects
-    //stringa vuota dove inserire il markup generato dal ciclo forEach
-    let cards_elements = "";
-    //ciclo forEach per accedere agli elementi dell'array
-    result.forEach(element => {
-        let {url, title} = element;
-        //inserire la maiuscola ad ogni parola di title (stringa)
-        //1) .split(): crea una array di stringhe, dove ogni parola è una singola stringa sulla quale possiamo agire
-        let new_title = title.split(' ')
-        //2) .map(): funzione dove per ogni stringa dell'array: charAt(0).toUpperCase() prende solo la prima lettera della parola e la mette maiuscola, poi con: + word.slice(1), aggiunge il resto delle lettere della parola (partendo da 1 (seconda lettera, la prima come abbaimo visto è 0))
-        new_title = new_title.map(word => word.charAt(0).toUpperCase() + word.slice(1))
-        // 3) .join("") unisce tutte le stringhe in un'unica stringa, all'interno di un array
-        new_title = new_title.join(' ');
-        //creo il markup generato nell'html
-        let markup = ` 
+axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
+    .then(response => {
+        let result = response.data;
+        console.log(result); //array di 6 objects
+        //stringa vuota dove inserire il markup generato dal ciclo forEach
+        let cards_elements = "";
+        //ciclo forEach per accedere agli elementi dell'array
+        result.forEach(element => {
+            let { url, title } = element;
+            //inserire la maiuscola ad ogni parola di title (stringa)
+            //1) .split(): crea una array di stringhe, dove ogni parola è una singola stringa sulla quale possiamo agire
+            let new_title = title.split(' ')
+            //2) .map(): funzione dove per ogni stringa dell'array: charAt(0).toUpperCase() prende solo la prima lettera della parola e la mette maiuscola, poi con: + word.slice(1), aggiunge il resto delle lettere della parola (partendo da 1 (seconda lettera, la prima come abbaimo visto è 0))
+            new_title = new_title.map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            // 3) .join("") unisce tutte le stringhe in un'unica stringa, all'interno di un array
+            new_title = new_title.join(' ');
+            //creo il markup generato nell'html
+            let markup = ` 
         <div class="col-20rem image">
             <img class="img" src="${url}" alt="">
             <img class="pin" src="./blog_assets_day1/img/pin.svg" alt="">
             <p class="card-text">${new_title}</p>
         </div>
         `
-        //inserimento del markup nell stringa vuota (+= così si sommano ad ogni iterazione del ciclo)
-        cards_elements += markup; 
-        //accedo all'elemento della dom da modificare
-        let row = document.querySelector(".row")
-        //modifico l'elemento della dom
-        row.innerHTML = cards_elements;
-    });
-})
+            //inserimento del markup nell stringa vuota (+= così si sommano ad ogni iterazione del ciclo)
+            cards_elements += markup;
+            //accedo all'elemento della dom da modificare
+            let row = document.querySelector(".row")
+            //modifico l'elemento della dom
+            row.innerHTML = cards_elements;
+        });
+
+
+        //addeventlistener sulla foto, che quando viene cliccata appare l'overlay
+        let img_element = document.querySelector(".img");
+        /* console.log(img_element); */
+        let overlay_element = document.querySelector(".overlay");
+        /* console.log(overlay_element); */
+        let btn_element = document.querySelector(".btn")
+
+        img_element.addEventListener("click", function function_overlay_on() {
+            overlay_element.style.display = "block"
+        })
+
+        btn_element.addEventListener("click", function function_overlay_off() {
+            overlay_element.style.display = "none"
+        })
+    })
+
+
 
 
 
 
 /* 
-
 Milestone 1
-Facciamo in modo di creare un overlay che copra l’intera pagina e all’interno, centrata, disponiamo un’immagine qualunque ed un button di chiusura.
+Facciamo in modo di creare un overlay che copra l’intera pagina e all’interno, centrata, disponiamo un’immagine qualunque ed un button di chiusura.     //FATTO
+
 Milestone 2
-Facciamo sparire l’overlay con l’aiuto di una classe CSS che imposti il display: none .
+Facciamo sparire l’overlay con l’aiuto di una classe CSS che imposti il display: none       //FATTO
 Dopodichè facciamo sì che cliccando una qualunque foto. L’overlay ricompaia.
 Cliccando invece il button di chiusura, l’overlay scompare nuovamente.
+
 Milestone 3
 Inseriamo il pezzo di logica finale: quando una foto viene cliccata, dobbiamo fare in modo che sia proprio quella foto a essere mostrata all’interno dell’overlay.
 Ci sono diversi modi di farlo, prova a sperimentare :faccia_leggermente_sorridente:
+
 Bonus
 Spostandosi col mouse sopra le foto, queste si zoommano, ruotano di 10 gradi e la loro ombra aumenta, il tutto in manierà fluida. Inoltre il mouse diventa un puntatore, per far capire all’utente che può cliccare
-
 */
 
