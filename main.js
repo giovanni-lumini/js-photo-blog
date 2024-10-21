@@ -31,14 +31,14 @@ axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
             new_title = new_title.map(word => word.charAt(0).toUpperCase() + word.slice(1))
             // 3) .join("") unisce tutte le stringhe in un'unica stringa, all'interno di un array
             new_title = new_title.join(' ');
-            //creo il markup generato nell'html
+            //creo il markup del main generato nell'html
             let markup_main = ` 
-        <div class="col-20rem image">
-            <img class="img" src="${url}" alt="">
-            <img class="pin" src="./blog_assets_day1/img/pin.svg" alt="">
-            <p class="card-text">${new_title}</p>
-        </div>
-        `
+                <div class="col-20rem image">
+                    <img class="img" src="${url}" alt="">
+                    <img class="pin" src="./blog_assets_day1/img/pin.svg" alt="">
+                    <p class="card-text">${new_title}</p>
+                </div>
+            `
             //inserimento del markup nell stringa vuota (+= così si sommano ad ogni iterazione del ciclo)
             cards_elements += markup_main;
             //accedo all'elemento della dom da modificare
@@ -47,7 +47,7 @@ axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
             row.innerHTML = cards_elements;
         });
 
-        
+
         //1-seleziono tutte le immagini dalla DOM
         let img_element = document.querySelectorAll(".img");
         console.log(img_element);
@@ -60,22 +60,30 @@ axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
         //4-metto un'atro pulsante nell'overlay per far chiudere l'overlay
         for (let i = 0; i < img_element.length; i++) {
             img_element[i].addEventListener("click", function function_overlay_on() {
-                overlay_element.style.display = "block"
+                //5-genero dinamicamente il contenuto dell'overlay in base all'immagine cliccata
+                let markup_overlay = `
+                <div>
+                    <button type="button" class="btn btn-light mt-3 mb-4">Chiudi</button>
+                </div>
+                <div>
+                    ${img_element[i]}
+                </div>
+                `
+                overlay_element.innerHTML = markup_overlay;
+                overlay_element.style.display = "block";
             })
             btn_element.addEventListener("click", function function_overlay_off() {
-                overlay_element.style.display = "none"
+                overlay_element.style.display = "none";
             })
         }
-
-        
-        //5-genero dinamicamente il contenuto dell'overlay in base all'immagine cliccata
-        
-        //addeventlistener sulla foto, che quando viene cliccata appare l'overlay
-        
-        
-
-        
     })
+
+
+
+
+
+
+
 
 
 
@@ -88,12 +96,11 @@ Facciamo in modo di creare un overlay che copra l’intera pagina e all’intern
 
 Milestone 2
 Facciamo sparire l’overlay con l’aiuto di una classe CSS che imposti il display: none       //FATTO
-Dopodichè facciamo sì che cliccando una qualunque foto. L’overlay ricompaia.
-Cliccando invece il button di chiusura, l’overlay scompare nuovamente.
+Dopodichè facciamo sì che cliccando una qualunque foto. L’overlay ricompaia.        //FATTO
+Cliccando invece il button di chiusura, l’overlay scompare nuovamente.      //FATTO
 
 Milestone 3
 Inseriamo il pezzo di logica finale: quando una foto viene cliccata, dobbiamo fare in modo che sia proprio quella foto a essere mostrata all’interno dell’overlay.
-Ci sono diversi modi di farlo, prova a sperimentare :faccia_leggermente_sorridente:
 
 Bonus
 Spostandosi col mouse sopra le foto, queste si zoommano, ruotano di 10 gradi e la loro ombra aumenta, il tutto in manierà fluida. Inoltre il mouse diventa un puntatore, per far capire all’utente che può cliccare
