@@ -32,7 +32,7 @@ axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
             // 3) .join("") unisce tutte le stringhe in un'unica stringa, all'interno di un array
             new_title = new_title.join(' ');
             //creo il markup generato nell'html
-            let markup = ` 
+            let markup_main = ` 
         <div class="col-20rem image">
             <img class="img" src="${url}" alt="">
             <img class="pin" src="./blog_assets_day1/img/pin.svg" alt="">
@@ -40,28 +40,41 @@ axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
         </div>
         `
             //inserimento del markup nell stringa vuota (+= così si sommano ad ogni iterazione del ciclo)
-            cards_elements += markup;
+            cards_elements += markup_main;
             //accedo all'elemento della dom da modificare
             let row = document.querySelector(".row")
             //modifico l'elemento della dom
             row.innerHTML = cards_elements;
         });
 
-
-        //addeventlistener sulla foto, che quando viene cliccata appare l'overlay
-        let img_element = document.querySelector(".img");
-        /* console.log(img_element); */
+        
+        //1-seleziono tutte le immagini dalla DOM
+        let img_element = document.querySelectorAll(".img");
+        console.log(img_element);
+        //1a-seleziono gli elementi dell'overlay dalla DOM
         let overlay_element = document.querySelector(".overlay");
         /* console.log(overlay_element); */
-        let btn_element = document.querySelector(".btn")
+        let btn_element = document.querySelector(".btn");
+        //2-scorro tra le immagini selezionate e associo a ciascuna un event listener
+        //3-al click devo mostrare l'overlay
+        //4-metto un'atro pulsante nell'overlay per far chiudere l'overlay
+        for (let i = 0; i < img_element.length; i++) {
+            img_element[i].addEventListener("click", function function_overlay_on() {
+                overlay_element.style.display = "block"
+            })
+            btn_element.addEventListener("click", function function_overlay_off() {
+                overlay_element.style.display = "none"
+            })
+        }
 
-        img_element.addEventListener("click", function function_overlay_on() {
-            overlay_element.style.display = "block"
-        })
+        
+        //5-genero dinamicamente il contenuto dell'overlay in base all'immagine cliccata
+        
+        //addeventlistener sulla foto, che quando viene cliccata appare l'overlay
+        
+        
 
-        btn_element.addEventListener("click", function function_overlay_off() {
-            overlay_element.style.display = "none"
-        })
+        
     })
 
 
