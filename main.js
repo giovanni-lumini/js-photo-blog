@@ -58,10 +58,9 @@ axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
             /* console.log(overlay_element); */
             let btn_element = document.querySelector(".btn");
             //2-scorro tra le immagini selezionate e associo a ciascuna un event listener
-            for (let i = 0; i < img_element.length; i++) {
                 //3-al click devo mostrare l'overlay
-                img_element[i].addEventListener("click", function function_overlay_on() {       
-                    let markup_overlay = ` 
+                img_element.addEventListener("click", function function_overlay_on() {       
+                    /* let markup_overlay = ` 
                     <div>
                         <button type="button" class="btn btn-light mt-3 mb-4">Chiudi</button>
                     </div>
@@ -69,14 +68,14 @@ axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
                         <img class="img_overlay" src="${url}" alt="">
                     </div>
                     `
-                    overlay_element.innerHTML = markup_overlay;
+                    overlay_element.innerHTML = markup_overlay; */
                     overlay_element.style.display = "block";
                 })
                 //4-metto un'atro pulsante nell'overlay per far chiudere l'overlay
                 btn_element.addEventListener("click", function function_overlay_off() {
                     overlay_element.style.display = "none";
                 })
-            }
+
         });
         /* INDICAZIONI FABIO */
         //1-seleziono tutte le immagini dal dom
